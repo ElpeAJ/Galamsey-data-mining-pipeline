@@ -1,3 +1,5 @@
+<img width="300" height="300" alt="Galamsey effect on Water bodies - before & after" style="text-align:center;" src="https://github.com/user-attachments/assets/561172f3-477a-4368-a5b9-3f7f79c745c3" />
+
 # Galamsey Threat Detection Pipeline: Data Mining & Edge AI Acceleration
 
 An end-to-end artificial intelligence project designed to analyze, model, and accelerate predictive analytics regarding the environmental impact of illegal mining (Galamsey) on regional water bodies. 
