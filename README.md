@@ -1,6 +1,9 @@
+<!--
 <img width="300" height="300" alt="Galamsey effect on Water bodies - before & after" style="text-align:center;" src="https://github.com/user-attachments/assets/561172f3-477a-4368-a5b9-3f7f79c745c3" />
 
-<img width="640" height="457" alt="Galamsey effect on Water bodies - before & after" src="https://github.com/user-attachments/assets/36d89a55-e3d9-4dc2-b0ce-8ab1c09a4190" />
+<img width="640" height="457" alt="Galamsey effect on Water bodies - before & after" src="https://github.com/user-attachments/assets/36d89a55-e3d9-4dc2-b0ce-8ab1c09a4190" /> 
+-->
+<img width="1560" height="715" alt="Galamsey effect on Water bodies - before & after" src="https://github.com/user-attachments/assets/bc38ec8a-850c-4a35-b6d5-6f77dd4969e7" />
 
 
 # Galamsey Threat Detection Pipeline: Data Mining & Edge AI Acceleration
