@@ -5,7 +5,8 @@ An end-to-end artificial intelligence project designed to analyze, model, and ac
 This repository showcases the full AI lifecycle, transitioning from exploratory visual data mining (**Orange**) to hardware-level model acceleration (**Intel OpenVINO**).
 
 <img width="400" alt="Orange Data Mining" src="https://github.com/user-attachments/assets/6ebc2213-6441-4408-bd26-b7e5af0366ea" />
-<img width="400" alt="Intel OpenVINO" src="https://github.com/user-attachments/assets/ba2068f6-63d0-450b-bf41-5f978433a6dd" />
+<img width="400" alt="OpenVINO" src="https://github.com/user-attachments/assets/4c608236-866d-4df1-8fac-3677a691b5c0" />
+
 
 
 ---
