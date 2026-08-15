@@ -21,7 +21,7 @@ In this phase, raw environmental data matrices are ingested to uncover statistic
 * **Feature Selection & Descriptive Analytics:** Filtering parameters using `Feature Statistics` and tracking data spreads through `Distributions`.
 * **Predictive Modeling:** Applying a `Linear Regression` node to mathematically model the relationship between Nemerow's Index and overall WQI degradation.
 
-![Orange Workflow Pipeline](screenshot.png) *(Note: Replace this placeholder text by uploading your node screenshot as "screenshot.png")*
+<img width="1507" height="546" alt="Data exploratory - Galamsey" src="https://github.com/user-attachments/assets/985ec69f-3be8-476c-b809-d0ce0270af6e" />
 
 ---
 
