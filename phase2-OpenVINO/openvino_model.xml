@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<net name="Galamsey_WQI_Predictor" version="11">
+	<layers>
+		<layer id="0" name="Nemerow_Index" type="Parameter" version="opset1">
+			<data shape="?,1" element_type="f32" />
+			<output>
+				<port id="0" precision="FP32" names="Nemerow_Index">
+					<dim>-1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="1" name="Constant_2" type="Const" version="opset1">
+			<data element_type="f32" shape="1" offset="0" size="4" />
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="2" name="Multiply_4" type="Multiply" version="opset1">
+			<data auto_broadcast="numpy" />
+			<input>
+				<port id="0" precision="FP32">
+					<dim>-1</dim>
+					<dim>1</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>-1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="3" name="Constant_3" type="Const" version="opset1">
+			<data element_type="f32" shape="1" offset="4" size="4" />
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="4" name="WQI_Prediction" type="Add" version="opset1">
+			<data auto_broadcast="numpy" />
+			<input>
+				<port id="0" precision="FP32">
+					<dim>-1</dim>
+					<dim>1</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32" names="Result_6">
+					<dim>-1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="5" name="Result_6" type="Result" version="opset1" output_names="Result_6">
+			<input>
+				<port id="0" precision="FP32">
+					<dim>-1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+		</layer>
+	</layers>
+	<edges>
+		<edge from-layer="0" from-port="0" to-layer="2" to-port="0" />
+		<edge from-layer="1" from-port="0" to-layer="2" to-port="1" />
+		<edge from-layer="2" from-port="2" to-layer="4" to-port="0" />
+		<edge from-layer="3" from-port="0" to-layer="4" to-port="1" />
+		<edge from-layer="4" from-port="2" to-layer="5" to-port="0" />
+	</edges>
+	<rt_info>
+		<info name="OpenVINO Runtime" value="2026.3.0-22451-8a17657b995-releases/2026/3" />
+	</rt_info>
+</net>
