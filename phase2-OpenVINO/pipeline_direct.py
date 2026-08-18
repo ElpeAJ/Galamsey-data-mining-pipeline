@@ -15,7 +15,7 @@ print("Starting data mining pipeline...")
 print("------ Step 1: Load the dataset ------")
 
 #1. Load your generated water quality dataset
-df = pd.read_csv("galamsey_pollution_data.csv")
+df = pd.read_csv("phase2-OpenVINO/galamsey_pollution_data.csv")
 
 
 #2. Define your features (X) and target variable (y)
