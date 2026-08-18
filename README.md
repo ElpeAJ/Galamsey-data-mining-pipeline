@@ -1,8 +1,12 @@
 # 🌊 Galamsey Threat Detection Pipeline: Data Mining & Edge AI Acceleration
+<img width="1560" height="715" alt="Galamsey effect on Water bodies - before & after" src="https://github.com/user-attachments/assets/bc38ec8a-850c-4a35-b6d5-6f77dd4969e7" />
 
 Illegal mining operations (**Galamsey**) severely degrade regional water bodies through toxic runoff, sediment loading, and destructive chemical dumping. This project establishes an end-to-end Machine Learning lifecycle to model environmental water degradation thresholds and accelerate the resulting predictive processing engine for low-power edge hardware deployment.
 
 This repository demonstrates a complete engineering workflow: transitioning from exploratory data discovery and visual prototyping in **Phase 1 (Orange Data Mining)** to automated training, cross-framework bridging, and high-speed non-blocking deployment in **Phase 2 (Intel OpenVINO)**.
+<br>
+<img width="250" alt="Orange Data Mining" src="https://github.com/user-attachments/assets/6ebc2213-6441-4408-bd26-b7e5af0366ea" />
+<img width="250" alt="OpenVINO" src="https://github.com/user-attachments/assets/4c608236-866d-4df1-8fac-3677a691b5c0" />
 
 ---
 
