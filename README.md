@@ -1,8 +1,8 @@
 # 🌊 Galamsey Threat Detection Pipeline: Data Mining & Edge AI Acceleration
 <img width="1560" height="715" alt="Galamsey effect on Water bodies - before & after" src="https://github.com/user-attachments/assets/bc38ec8a-850c-4a35-b6d5-6f77dd4969e7" />
 >*Fig. 1 - Before and After picture of ... due to Galamsey on Water bodies*
-<br>
-Illegal mining operations (**Galamsey**) severely degrade regional water bodies through toxic runoff, sediment loading, and destructive chemical dumping. This project establishes an end-to-end Machine Learning lifecycle to model environmental water degradation thresholds and accelerate the resulting predictive processing engine for low-power edge hardware deployment.
+<p>
+Illegal mining operations (<b>Galamsey</b>) severely degrade regional water bodies through toxic runoff, sediment loading, and destructive chemical dumping. This project establishes an end-to-end Machine Learning lifecycle to model environmental water degradation thresholds and accelerate the resulting predictive processing engine for low-power edge hardware deployment.</p>
 
 This repository demonstrates a complete engineering workflow: transitioning from exploratory data discovery and visual prototyping in **Phase 1 (Orange Data Mining)** to automated training, cross-framework bridging, and high-speed non-blocking deployment in **Phase 2 (Intel OpenVINO)**.
 <br>
@@ -52,6 +52,7 @@ The regression model successfully tracked a near-flawless negative linear relati
 <br>
 <img width="435" height="330" alt="Screenshot 2026-08-19 at 12 48 01 AM" src="https://github.com/user-attachments/assets/8f61d41c-1d21-4268-8891-3dcb42c41633" />
 >*Fig.8 - close-up crop of the Scatter Plot’s bottom-right label showing the -0.98 statistical validation metric.*
+
 ---
 
 ## Phase 2: Edge AI Optimization & Developer Pipeline (Intel OpenVINO)
