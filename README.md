@@ -1,6 +1,6 @@
-# 🌊 Galamsey Threat Detection Pipeline: Data Mining & Edge AI Acceleration
+# Galamsey Threat Detection Pipeline: Data Mining & Edge AI Acceleration
 <img width="1560" height="715" alt="Galamsey effect on Water bodies - before & after" src="https://github.com/user-attachments/assets/bc38ec8a-850c-4a35-b6d5-6f77dd4969e7" />
-<blockquote> <em> Fig. 1 - Before and After picture of ... due to Galamsey on Water bodies </em></blockquote>
+<blockquote> <em> Fig. 1 - The Jimi River located in Obuasi Odumasi Before and After Galamsey </em></blockquote>
 
 <p>
 Illegal mining operations (<b>Galamsey</b>) severely degrade regional water bodies through toxic runoff, sediment loading, and destructive chemical dumping. This project establishes an end-to-end Machine Learning lifecycle to model environmental water degradation thresholds and accelerate the resulting predictive processing engine for low-power edge hardware deployment.</p>
@@ -15,17 +15,17 @@ This repository demonstrates a complete engineering workflow: transitioning from
 
 ## Architectural Core: The Math Behind the Pipeline
 
-To accurately quantify and automate environmental devastation assessments, our pipeline models the core relationship between two vital environmental metrics:
+To accurately quantify and automate environmental devastation assessments, the pipeline models the core relationship between two vital environmental metrics:
 1. **Nemerow’s Pollution Index (NPI):** An index tracking the aggregate and maximum concentrations of heavy chemical pollutants present in a specific water sample.
 2. **Water Quality Index (WQI):** A universal scale grading overall water health. Perfectly clean, pristine water scores near **100**, while heavily contaminated water drops sharply toward **10**.
 
 ### The Mathematical Target Formula
-Our objective is to train a high-performance linear model ($WQI = m \cdot NPI + c$) that accepts raw Nemerow pollution data feeds and instantly predicts the resulting Water Quality Index score, triggering automated field alerts when safety parameters drop below acceptable limits.
+The objective is to train a high-performance linear model ($WQI = m \cdot NPI + c$) that accepts raw Nemerow pollution data feeds and instantly predicts the resulting Water Quality Index score, triggering automated field alerts when safety parameters drop below acceptable limits.
 
 ---
 
 ## Phase 1: Prototyping & Visual Modeling (Orange)
-Before deploying raw code pipelines, it is crucial to discover data trends and validate the mathematical viability of our targets. We used **Orange Data Mining** to establish our architectural baseline, completely bypassing traditional spreadsheet layout, text-row pollution, or data transposition errors by feeding our clean data matrix asset directly into an OLS (Ordinary Least Squares) Linear Regression model.
+Before deploying raw code pipelines, it is crucial to discover data trends and validate the mathematical viability of our targets. **Orange Data Mining** was used to establish the architectural baseline, completely bypassing traditional spreadsheet layout, text-row pollution, or data transposition errors by feeding clean data matrix asset directly into an OLS (Ordinary Least Squares) Linear Regression model.
 
 <img width="1461" height="856" alt="Screenshot 2026-08-19 at 12 28 31 AM" src="https://github.com/user-attachments/assets/ad1df703-85c9-488a-a2fa-b7091dace951" />
 <blockquote> <em>Fig.4 - screenshot of the full, clean node workspace on Orange canvas background. </em></blockquote>
@@ -59,14 +59,14 @@ The regression model successfully tracked a near-flawless negative linear relati
 ## Phase 2: Edge AI Optimization & Developer Pipeline (Intel OpenVINO)
 While visual prototyping tools like Orange provide valuable baseline insights, they cannot run efficiently on resource-constrained, low-power hardware in the field (such as solar-powered river sensor relays floating in water bodies). 
 
-To solve this, we moved our trained model into pure Python code and accelerated it using the **Intel OpenVINO Toolkit**. 
+To solve this, the trained model was moved into pure Python code and accelerated it using the **Intel OpenVINO Toolkit**. 
 
 ### The Isolated Developer Installation Approach
-Instead of implementing heavy, complex, system-wide installation architectures or manual C++ visual installation managers (e.g., standard documentation steps such as `sudo mkdir /opt/intel` or sourcing manual `setupvars.sh` environment paths), we utilized an isolated **Python Developer Pipeline** built directly inside a local virtual environment (`.venv`). By executing:
+Instead of implementing heavy, complex, system-wide installation architectures or manual C++ visual installation managers (e.g., standard documentation steps such as `sudo mkdir /opt/intel` or sourcing manual `setupvars.sh` environment paths), an isolated **Python Developer Pipeline** was built directly inside a local virtual environment (`.venv`). By executing:
 ```bash
 pip install openvino
 ```
-Intel's pre-compiled, high-performance hardware-level optimization core libraries were automatically linked directly into our Python runtime environment, completely bypassing the need for desktop installation windows or global file-system modifications.
+Intel's pre-compiled, high-performance hardware-level optimization core libraries were automatically linked directly into the Python runtime environment, completely bypassing the need for desktop installation windows or global file-system modifications.
 
 ---
 
@@ -113,7 +113,7 @@ print("Successfully generated clean data file: galamsey_pollution_data.csv!")
 Depending on one's production requirements, this pipeline supports three distinct execution variants to turn data insights into hardware-accelerated OpenVINO Intermediate Representation (**IR**) deployment files (`.xml` network blueprints and `.bin` parameter arrays):
 
 #### Option A: The Native Code Compiler Pipeline (`pipeline_direct.py`)
-This option operates independently of Orange. It ingests your raw CSV dataset, uses Scikit-Learn to train an Ordinary Least Squares linear regression model directly in code, extracts the model's computed parameters, and maps them directly into OpenVINO graph execution operators (`multiply` and `add`).
+This option operates independently of Orange. It ingests raw CSV dataset, uses Scikit-Learn to train an Ordinary Least Squares linear regression model directly in code, extracts the model's computed parameters, and maps them directly into OpenVINO graph execution operators (`multiply` and `add`).
 * **Why it was built:** It provides maximum independence. One can tweak, scale, or expand the data properties programmatically without ever touching a graphical application interface.
 
 ```bash
@@ -187,11 +187,11 @@ print("=" * 50)
 <br>
 <blockquote> <em> Code Block 2. - Complete code for pipeline_direct.py showing scikit-learn training logic and the initial to_onnx mapping setup.</em></blockquote>
 <img width="971" height="477" alt="Screenshot 2026-08-18 at 11 34 02 PM" src="https://github.com/user-attachments/assets/47bf3f86-6935-4769-9848-fbfd3ae5a278" />
-<blockquote> <em> Fig. 12 - Screenshot of terminal executing pipeline_direct.py, showing your calculated baseline coefficients and intercept numbers. </em></blockquote>
+<blockquote> <em> Fig. 12 - Screenshot of terminal executing pipeline_direct.py, showing calculated baseline coefficients and intercept numbers. </em></blockquote>
 
 #### Option B: The Headless Cross-Framework Translation Bridge (`pipeline_orange_bridge.py`)
-This script creates a direct translation link between Phase 1 and Phase 2. It opens your saved Orange workspace model binary file (`.pkcls`) using a raw binary stream, extracts the underlying Scikit-Learn model object nested inside, and maps it natively to OpenVINO.
-* **Why it was built:** This is a core feature of enterprise data engineering. It allows you to prototype visually in Orange, save your work, and instantly convert that exact model file into high-speed code without any desktop window manager overhead or user interface conflicts.
+This script creates a direct translation link between Phase 1 and Phase 2. It opens the saved Orange workspace model binary file (`.pkcls`) using a raw binary stream, extracts the underlying Scikit-Learn model object nested inside, and maps it natively to OpenVINO.
+* **Why it was built:** This is a core feature of enterprise data engineering. It allows one to prototype visually in Orange, save the work, and instantly convert that exact model file into high-speed code without any desktop window manager overhead or user interface conflicts.
 
 ```bash
 #### Refer to phase2-OpenVino/pipeline_orange_bridge.py for full code
