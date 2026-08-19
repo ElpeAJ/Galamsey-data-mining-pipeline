@@ -26,7 +26,7 @@ if not os.path.exists(ledger_file):
 
 print("\n--- Step 3: Stream Processing Data Ingestion Pipeline ---")
 # 2. Ingest the actual data matrix asset you generated earlier
-data_source = "galamsey_pollution_data.csv"
+data_source = "phase2-OpenVINO/galamsey_pollution_data.csv"
 if not os.path.exists(data_source):
     print(f"Error: {data_source} missing! Run generate_data.py first.")
     exit()
