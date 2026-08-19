@@ -106,9 +106,9 @@ df = pd.DataFrame({"Nemerow_Index": nemerow_index, "WQI": wqi})
 df.to_csv("galamsey_pollution_data.csv", index=False)
 print("Successfully generated clean data file: galamsey_pollution_data.csv!")
 ```
-<blockquote> <em> Code Block 1. complete python code block for generate_data.py showing your seed initialization, numpy array formulas, and pandas to_csv function call.</em></blockquote>
+<blockquote> <em> Code Block 1. - Complete python code block for generate_data.py showing your seed initialization, numpy array formulas, and pandas to_csv function call.</em></blockquote>
 
-### The 3 Distinct Model Compilation Strategies Implemented
+### 2️⃣ The 3 Distinct Model Compilation Strategies Implemented
 
 Depending on one's production requirements, this pipeline supports three distinct execution variants to turn data insights into hardware-accelerated OpenVINO Intermediate Representation (**IR**) deployment files (`.xml` network blueprints and `.bin` parameter arrays):
 
@@ -187,7 +187,7 @@ print("=" * 50)
 <br>
 <blockquote> <em> Code Block 2. - Complete code for pipeline_direct.py showing scikit-learn training logic and the initial to_onnx mapping setup.</em></blockquote>
 <img width="971" height="477" alt="Screenshot 2026-08-18 at 11 34 02 PM" src="https://github.com/user-attachments/assets/47bf3f86-6935-4769-9848-fbfd3ae5a278" />
-<blockquote> <em> Fig. 12 - </em></blockquote>
+<blockquote> <em> Fig. 12 - Screenshot of terminal executing pipeline_direct.py, showing your calculated baseline coefficients and intercept numbers. </em></blockquote>
 
 #### Option B: The Headless Cross-Framework Translation Bridge (`pipeline_orange_bridge.py`)
 This script creates a direct translation link between Phase 1 and Phase 2. It opens your saved Orange workspace model binary file (`.pkcls`) using a raw binary stream, extracts the underlying Scikit-Learn model object nested inside, and maps it natively to OpenVINO.
@@ -212,12 +212,164 @@ output_node = ov.opset10.add(mul_node, intercept_const, name="WQI_Prediction")
 # ...
 
 ```
+<blockquote> <em> Code Block 3. - OpenVINO opset10 block used to handle classical ML operator constraints: ov.opset10.parameter, ov.opset10.multiply, and ov.opset10.add </em></blockquote>
 <br>
-<img width="1430" height="483" alt="Screenshot 2026-08-18 at 11 37 10 PM" src="https://github.com/user-attachments/assets/b78cb1fe-6c4b-4dc8-9d18-12224ebefeb8" />
+<img width="971" height="440" alt="Screenshot 2026-08-19 at 1 28 23 AM" src="https://github.com/user-attachments/assets/485101d4-6c3a-4a97-a754-b0fa05cf86dd" />
+<blockquote><em>Fig. 13 - Screenshot of terminal running pipeline_orange_bridge.py showing the raw slope parameter extracted cleanly from the Orange file configuration.</em></blockquote>
+
+<!--<img width="1430" height="483" alt="Screenshot 2026-08-18 at 11 37 10 PM" src="https://github.com/user-attachments/assets/b78cb1fe-6c4b-4dc8-9d18-12224ebefeb8" />-->
 
 
 #### Option C: The PyQt/Qt6 Graphics Integration Pipeline (`pipeline_orange_pyqt.py`)
 This pipeline uses the full `from Orange.modelling import Model` package library approach, satisfying all underlying framework class bindings by installing desktop dependencies (`PyQt6` and `PySide6`) inside the virtual environment.
 * **Why it was built:** This option was implemented to demonstrate how to resolve system environment traps and verify model schemas natively using the parent library's official validation tools.
+<img width="971" height="440" alt="Screenshot 2026-08-19 at 1 31 08 AM" src="https://github.com/user-attachments/assets/22c126d9-e148-46cf-b8af-6f1eb4ca2ec1" />
+<!--<img width="1430" height="496" alt="Screenshot 2026-08-18 at 11 41 43 PM" src="https://github.com/user-attachments/assets/8478aee6-b4f8-40c1-b768-41bd029e857e" />-->
+<blockquote><em>Fig. 14 - Screenshot showing the python unpickling version mismatch warning (estimator LinearRegression version mismatch 1.5.2 vs 1.9.0) </em></blockquote>
 
-<img width="1430" height="496" alt="Screenshot 2026-08-18 at 11 41 43 PM" src="https://github.com/user-attachments/assets/8478aee6-b4f8-40c1-b768-41bd029e857e" />
+
+### 3️⃣ Real-Time Asynchronous Production Inference Engine (`inference.py`)
+
+The true deployment brain of the system. This script simulates real-time data collection from water body field instruments. Instead of running synchronous, blocking execution cycles that freeze the program while waiting for calculations to complete, this deployment engine initializes an advanced **`AsyncInferQueue`**.
+
+* **Non-Blocking Architecture:** Data packets are loaded into parallel request slots and transferred instantly to hardware background worker threads on the CPU. The telemetry loop stays fluid and can accept new sensor streams seamlessly with zero data packet loss.
+* **Fractional Millisecond Latency:** The compiled OpenVINO IR binary graph computes water quality indices at extreme speeds, clocking in at **0.16ms to 0.40ms per inference**.
+* **Automated Threshold Classification Logic:** The inference results are piped through an automated classification check that handles real-time risk triage:
+  * $WQI \ge 70$: 🟢 SAFE / EXCELLENT
+  * $50 \le WQI < 70$: 🟡 WARNING: Moderate Pollution Detected
+  * $WQI < 50$: 🔴 CRITICAL: Heavy Galamsey Contamination!
+
+### The Permanent Environmental Alert Ledger System
+When an asynchronous background callback flags a **🔴 CRITICAL** event, the script intercepts the telemetry thread and permanently logs a comprehensive, timestamped record into an archive ledger file called **`pollution_alerts.csv`**, tracking historical environmental violations for field enforcement teams.
+
+---
+
+```bash
+import os
+import time
+import numpy as np
+import pandas as pd
+import openvino as ov
+
+print("--- Step 1: Initializing Asynchronous OpenVINO Runtime Engine ---")
+core = ov.Core()
+
+# Load and compile the architecture
+model_xml = "openvino_model.xml"
+model = core.read_model(model=model_xml)
+compiled_model = core.compile_model(model=model, device_name="CPU")
+
+# 1. Initialize an AsyncInferQueue for non-blocking execution streams
+# We allocate 2 parallel request slots to compute streams concurrently
+infer_queue = ov.AsyncInferQueue(compiled_model, jobs=2)
+
+print("--- Step 2: Preparing Environmental Alert Ledger System ---")
+ledger_file = "pollution_alerts.csv"
+
+# Create a clean ledger file with headers if it doesn't already exist
+if not os.path.exists(ledger_file):
+    df_ledger = pd.DataFrame(columns=["Timestamp", "Sensor_ID", "Nemerow_Index", "Predicted_WQI", "Status"])
+    df_ledger.to_csv(ledger_file, index=False)
+
+print("\n--- Step 3: Stream Processing Data Ingestion Pipeline ---")
+# 2. Ingest the actual data matrix asset you generated earlier
+data_source = "phase2-OpenVINO/![Uploading Screenshot 2026-08-19 at 1.40.31 AM.png…]()
+galamsey_pollution_data.csv"
+if not os.path.exists(data_source):
+    print(f"Error: {data_source} missing! Run generate_data.py first.")
+    exit()
+
+df_stream = pd.read_csv(data_source)
+print(f"Loaded continuous data telemetry matrix containing {len(df_stream)} rows.")
+
+print("=" * 80)
+print(f"{'Stream ID':<12}{'Nemerow Index':<18}{'Predicted WQI':<18}{'Pipeline Deployment Status'}")
+print("=" * 80)
+
+# 3. Define the Asynchronous Callback Function
+# This function triggers automatically on a background thread the split-second a prediction completes
+def completion_callback(request, userdata):
+    # Extract structural identifiers passed down through userdata
+    stream_id, nemerow_val, start_time = userdata
+    latency = (time.perf_counter() - start_time) * 1000
+    
+    # Extract the resulting calculated prediction vector tensor
+    output_layer = request.get_output_tensor(0)
+    predicted_wqi = float(output_layer.data[0][0])
+    
+    # Threshold classification rules for field monitoring telemetry
+    if predicted_wqi >= 70:
+        status = "🟢 SAFE / EXCELLENT"
+    elif 50 <= predicted_wqi < 70:
+        status = "🟡 WARNING: Moderate Pollution"
+    else:
+        status = "🔴 CRITICAL: Heavy Galamsey Contamination!"
+        
+        # 4. Append severe environmental violations to the tracking ledger file immediately
+        alert_entry = pd.DataFrame([{
+            "Timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "Sensor_ID": f"SNS-{stream_id:03d}",
+            "Nemerow_Index": round(nemerow_val, 4),
+            "Predicted_WQI": round(predicted_wqi, 4),
+            "Status": "CRITICAL G_RUNOFF"
+        }])
+        alert_entry.to_csv(ledger_file, mode='a', header=False, index=False)
+        
+    print(f"Telemetry #{stream_id:<4} | {nemerow_val:<14.2f} | {predicted_wqi:<14.2f} | {status} ({latency:.2f}ms)")
+
+# Link our background thread callback mechanism to the inference queue handlers
+infer_queue.set_callback(completion_callback)
+
+# 5. Push data matrices through the non-blocking execution thread engine
+for idx, row in df_stream.head(20).iterrows():  # We process the first 20 records as a live demonstration stream
+    nemerow_input = float(row["Nemerow_Index"])
+    
+    # Format structural input data into standard OpenVINO 2D input layout
+    input_tensor = np.array([[nemerow_input]], dtype=np.float32)
+    
+    # Pack tracking identifiers into user payload packages
+    tracking_payload = (idx + 1, nemerow_input, time.perf_counter())
+    
+    # Push into the queue layer non-blockingly; execution transfers to background worker threads instantly
+    infer_queue.start_async({0: input_tensor}, userdata=tracking_payload)
+    
+    # Throttle slightly to simulate real-world sensor communication delays
+    time.sleep(0.1)
+
+# Wait completely until all asynchronous background threads finish processing remaining queue payloads
+infer_queue.wait_all()
+
+print("=" * 80)
+print(f"SUCCESS: Continuous stream pipeline completed.")
+print(f"Environmental warning entries have been securely archived inside: '{ledger_file}'")
+
+```
+
+<blockquote> <em> Code Block 4. - Complete code for inference.py showing AsyncInferQueue setup, the background completion_callback function logic, and automated ledger dataframe appending rules. </em></blockquote>
+
+<img width="971" height="883" alt="Screenshot 2026-08-19 at 1 40 55 AM" src="https://github.com/user-attachments/assets/1ab55ecd-f724-44ed-b89f-9673beb83796" />
+<blockquote><em>Fig. 15 - Comprehensive screenshot of an active terminal window executing inference.py, tracking the clean rows of Telemetry logs with their exact sub-millisecond processing speeds. </em></blockquote>
+
+<img width="520" height="692" alt="Screenshot 2026-08-19 at 1 44 58 AM" src="https://github.com/user-attachments/assets/1d1be013-d882-46c3-9b92-0f3c9b8df594" />
+<blockquote><em>Fig. 16 - Newly created pollution_alerts.csv spreadsheet open inside VS Code panel, showing logged timestamps, Sensor IDs, and CRITICAL classifications. </em></blockquote>
+
+## How to Run the Project Lifecycle From Scratch
+
+Follow these precise sequential commands within your terminal panel to watch the entire machine learning pipeline execute from baseline to edge deployment:
+
+```bash
+# 1. Activate your isolated virtual developer environment
+source .venv/bin/activate
+
+# 2. Build your telemetry data asset matrix
+python phase2-OpenVINO/generate_data.py
+
+# 3. Compile your models directly or bridge them from Orange
+python phase2-OpenVINO/pipeline_orange_bridge.py
+
+# 4. Launch your real-time asynchronous data stream processing engine
+python phase2-OpenVINO/inference.py
+```
+---
+
+
