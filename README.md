@@ -34,8 +34,9 @@ Before deploying raw code pipelines, it is crucial to discover data trends and v
 ### Configuration & Variable Mapping
 * Inside the File grid node configuration settings, `Nemerow_Index` was explicitly defined as the numeric **Feature** (independent variable), and `WQI` was set as the numeric **Target** (dependent variable).
 <br>
-<img width="780" height="435" alt="Screenshot 2026-08-18 at 10 38 56 PM" src="https://github.com/user-attachments/assets/dc14cb71-f44b-4fa0-9746-0f44fbb55516" /> <br>
-> screenshot of the File widget grid window where the feature role was applied to Nemerow_Index and the target role to WQI.
+<img width="780" height="435" alt="Screenshot 2026-08-18 at 10 38 56 PM" src="https://github.com/user-attachments/assets/dc14cb71-f44b-4fa0-9746-0f44fbb55516" />
+<br>
+>>> screenshot of the File widget grid window where the feature role was applied to Nemerow_Index and the target role to WQI.
 <br>
 <br>
 * All supplementary raw chemical markers were ignored to prevent collinearity distortion in our simple linear regression.
@@ -46,9 +47,11 @@ The regression model successfully tracked a near-flawless negative linear relati
 <br>
 <img width="767" height="485" alt="Screenshot 2026-08-18 at 10 48 34 PM" src="https://github.com/user-attachments/assets/1fc38c9f-8ff8-417d-8453-86ef4230fae9" /> 
 <br> 
->
+>>> snapshot of the Linear Regression properties dialog showing the model coefficients and intercepts calculated by Orange.
 <br>
 <img width="1504" height="946" alt="Screenshot 2026-08-18 at 10 51 16 PM" src="https://github.com/user-attachments/assets/6496092f-2001-4a40-b106-77adfaf55061" />
+<br>
+>>> generated scatter plot graph displaying the downward-sloping regression trend line passing smoothly through the 150 data points.
 
 ---
 
