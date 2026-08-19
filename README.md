@@ -1,6 +1,7 @@
 # 🌊 Galamsey Threat Detection Pipeline: Data Mining & Edge AI Acceleration
 <img width="1560" height="715" alt="Galamsey effect on Water bodies - before & after" src="https://github.com/user-attachments/assets/bc38ec8a-850c-4a35-b6d5-6f77dd4969e7" />
 >*Fig. 1 - Before and After picture of ... due to Galamsey on Water bodies*
+---
 <p>
 Illegal mining operations (<b>Galamsey</b>) severely degrade regional water bodies through toxic runoff, sediment loading, and destructive chemical dumping. This project establishes an end-to-end Machine Learning lifecycle to model environmental water degradation thresholds and accelerate the resulting predictive processing engine for low-power edge hardware deployment.</p>
 
