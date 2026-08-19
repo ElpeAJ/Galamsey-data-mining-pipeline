@@ -7,6 +7,7 @@ This repository demonstrates a complete engineering workflow: transitioning from
 <br>
 <img width="350" alt="Orange Data Mining" src="https://github.com/user-attachments/assets/6ebc2213-6441-4408-bd26-b7e5af0366ea" />
 <img width="350" alt="OpenVINO" src="https://github.com/user-attachments/assets/4c608236-866d-4df1-8fac-3677a691b5c0" />
+> Logo of Orange Mining Tool and Intel's OpenVINO
 
 ---
 
@@ -23,11 +24,17 @@ Our objective is to train a high-performance linear model ($WQI = m \cdot NPI + 
 
 ## Phase 1: Prototyping & Visual Modeling (Orange)
 Before deploying raw code pipelines, it is crucial to discover data trends and validate the mathematical viability of our targets. We used **Orange Data Mining** to establish our architectural baseline, completely bypassing traditional spreadsheet layout, text-row pollution, or data transposition errors by feeding our clean data matrix asset directly into an OLS (Ordinary Least Squares) Linear Regression model.
-<img width="1095" height="824" alt="Screenshot 2026-08-18 at 10 37 43 PM" src="https://github.com/user-attachments/assets/9bba1210-3dba-4de4-9ed2-b83ca231b4b1" />
+
+
+<img width="566" height="380" alt="Screenshot 2026-08-19 at 12 11 57 AM" src="https://github.com/user-attachments/assets/4bf3b6a0-20d0-4d04-bcd7-0468fbe07779" />
+<!-- <img width="1095" height="824" alt="Screenshot 2026-08-18 at 10 37 43 PM" src="https://github.com/user-attachments/assets/9bba1210-3dba-4de4-9ed2-b83ca231b4b1" /> -->
+> screenshot of the full, clean node workspace on Orange canvas background.
 
 ### Configuration & Variable Mapping
 * Inside the File grid node configuration settings, `Nemerow_Index` was explicitly defined as the numeric **Feature** (independent variable), and `WQI` was set as the numeric **Target** (dependent variable).
-  <img width="780" height="435" alt="Screenshot 2026-08-18 at 10 38 56 PM" src="https://github.com/user-attachments/assets/dc14cb71-f44b-4fa0-9746-0f44fbb55516" /> <br><br>
+  <img width="780" height="435" alt="Screenshot 2026-08-18 at 10 38 56 PM" src="https://github.com/user-attachments/assets/dc14cb71-f44b-4fa0-9746-0f44fbb55516" /> <br>
+> screenshot of the File widget grid window where the feature role was applied to Nemerow_Index and the target role to WQI.
+<br><br>
 * All supplementary raw chemical markers were ignored to prevent collinearity distortion in our simple linear regression.
 
 ### The Mathematical Signature
