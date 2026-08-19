@@ -1,0 +1,17 @@
+https://docs.openvino.ai/2026/index.html
+
+Yes, you can use Intel OpenVINO on a Mac. 
+Intel provides an official macOS version of the OpenVINO runtime 
+that supports both older Intel-based Macs and newer Apple Silicon (M1, M2, M3, M4) 
+processors via ARM64 architecture. You can install it using package managers like PyPI,
+ Conda-Forge, or Homebrew.Installation Options on MacPython (PyPI): Install via pip in your virtual environment.
+ Conda-Forge: Good if you manage packages using Anaconda or Miniconda. 
+ Homebrew: Convenient for macOS terminal users.
+ Archive File: Download and extract manually from the official Intel OpenVINO Download Page.
+ 
+Key Things to Know
+ Hardware Target: On a Mac, OpenVINO runs models locally on your Mac's CPU or GPU via standard fallback execution paths. 
+ You cannot use Intel-specific hardware accelerators like Intel Arc GPUs, VPUs, or integrated Intel graphics execution 
+ units unless connected via an external setup, but the core runtime works for model development, conversion, and 
+ inference testing.Compatibility: Ensure you use a recent version of OpenVINO (2024 or newer) for stable Apple Silicon
+ optimization.
