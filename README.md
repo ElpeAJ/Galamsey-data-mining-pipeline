@@ -76,6 +76,10 @@ The production pipeline is split into modular Python scripts to strictly isolate
 
 <img width="349" height="532" alt="Screenshot 2026-08-18 at 11 17 13 PM" src="https://github.com/user-attachments/assets/a42ea8bd-4135-4044-b5eb-46fac3be6928" />
 <img width="349" height="532" alt="Screenshot 2026-08-18 at 11 18 01 PM" src="https://github.com/user-attachments/assets/3c9f93be-4fda-404b-aeaa-faf28543c0de" />
+<img width="484" height="532" alt="Screenshot 2026-08-19 at 1 09 16 AM" src="https://github.com/user-attachments/assets/f7e418d6-8d2d-4986-b0e0-c03ed1693a7f" />
+
+<blockquote> <em>Fig.9, Fig.10 & Fig.11 - screenshot of VS Code sidebar showing the root directory layout, tracking your phase1-Orange and phase2-OpenVINO directories. Screenshot of generated galamsey_pollution_data.csv file opened in VS Code and the data Table in Orange confirming the clean, dual-column numeric layout.</em></blockquote>
+
 
 ### 1️⃣ Data Telemetry Ingestion Engineering (`generate_data.py`)
 Because real-world Galamsey pollution metrics are often heavily incomplete or improperly formatted across public datasets, this script acts as our data ingestion engine. It programmatically generates 150 scientifically realistic environmental water telemetry rows, modeling an inverse relationship with random Gaussian noise to mirror genuine river sensor variances.
@@ -102,7 +106,8 @@ df = pd.DataFrame({"Nemerow_Index": nemerow_index, "WQI": wqi})
 df.to_csv("galamsey_pollution_data.csv", index=False)
 print("Successfully generated clean data file: galamsey_pollution_data.csv!")
 ```
-<blockquote> <em> Code Block 1. complete python code block for generate_data.py showing your seed initialization, numpy array formulas, and pandas to_csv function call.*
+<blockquote> <em> Code Block 1. complete python code block for generate_data.py showing your seed initialization, numpy array formulas, and pandas to_csv function call.</em></blockquote>
+
 ### The 3 Distinct Model Compilation Strategies Implemented
 
 Depending on one's production requirements, this pipeline supports three distinct execution variants to turn data insights into hardware-accelerated OpenVINO Intermediate Representation (**IR**) deployment files (`.xml` network blueprints and `.bin` parameter arrays):
@@ -180,7 +185,9 @@ print("=" * 50)
 
 ```
 <br>
+<blockquote> <em> Code Block 2. - Complete code for pipeline_direct.py showing scikit-learn training logic and the initial to_onnx mapping setup.</em></blockquote>
 <img width="971" height="477" alt="Screenshot 2026-08-18 at 11 34 02 PM" src="https://github.com/user-attachments/assets/47bf3f86-6935-4769-9848-fbfd3ae5a278" />
+<blockquote> <em> Fig. 12 - </em></blockquote>
 
 #### Option B: The Headless Cross-Framework Translation Bridge (`pipeline_orange_bridge.py`)
 This script creates a direct translation link between Phase 1 and Phase 2. It opens your saved Orange workspace model binary file (`.pkcls`) using a raw binary stream, extracts the underlying Scikit-Learn model object nested inside, and maps it natively to OpenVINO.
